@@ -1,16 +1,21 @@
 const express = require('express');
+
 const app = express();
+
 app.use(express.json());
 
 
-const rutasUsuarios = require('./SRC/routes/crud');      
+const rutasUsuarios = require('./SRC/routes/crud');
+const rutasProductos = require('./SRC/routes/productos'); 
 
-app.use("/api/usuarios", rutasUsuarios);     
+
+app.use("/api/usuarios", rutasUsuarios);
+app.use("/api/productos", rutasProductos); 
+
 
 app.get("/", (req, res) => {
-res.send("API funcionando. Usa /api/usuarios o /api/productos");
+res.send("API funcionando. Usa /api/usuarios o /api/productos"); 
 });
-
 
 app.listen(3000, () => {
 console.log("Servidor en http://localhost:3000");
